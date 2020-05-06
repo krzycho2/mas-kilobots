@@ -42,10 +42,6 @@ public class KilobotsWithUI extends GUIState {
         // Draw a circle for each kilobot
         setKilobotsPortrayals();
 
-        // draw desired shape
-//        shapePortrayal.setField(kilobots.yard);
-//        setDesiredShapePortrayal();
-
         // reschedule the displayer
         display.reset();
         display.setBackdrop(Color.white);
@@ -80,18 +76,6 @@ public class KilobotsWithUI extends GUIState {
             yardPortrayal.setPortrayalForObject(kilobot, portrayal);
         }
     }
-
-//    private void setDesiredShapePortrayal() {
-//        KilobotsSimState kilobots = (KilobotsSimState) state;
-//        Rectangle.Double square = (Rectangle.Double) kilobots.desiredShape;
-////        yardPortrayal.setPortrayalForAll(new ShapePortrayal2D(square));
-//
-//        ImageIcon imageIcon = new ImageIcon("unt.png");
-//        Image image = imageIcon.getImage();
-//        int dimension = (int)Math.min(kilobots.yard.width, kilobots.yard.height);
-//        shapePortrayal.setPortrayalForAll(new ImagePortrayal2D(image, dimension));
-//
-//    }
 
     public void init(Controller c){
         super.init(c);

@@ -15,7 +15,6 @@ public class Neighborhood {
         this.allInfos = spaceInfos;
         setNeighbors();
 
-//        System.out.println("Zajęci sąsiedzi: " + getNumOccupiedNeighbors());
     }
 
     public void setNeighbors(){
@@ -68,12 +67,6 @@ public class Neighborhood {
     }
 
     public int getLowestNeighborGradient(){
-//        System.out.println("Gradienty sąsiadów.");
-        for(int i = 0; i < numNeighbors; i++){
-            Neighbor neighbor = neighbors.get(i);
-//            if(neighbor.occupied)
-//                System.out.println("Gradient "  + i + " = " + neighbors.get(i).spaceInfo.gradient);
-        }
 
         return neighbors.stream().
                 filter(x -> x.occupied).                            // only occupied

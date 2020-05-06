@@ -48,27 +48,21 @@ public class DriveModule {
         neighborhood = new Neighborhood(ownerInfo, othersInfo);
         if(neighborhood.isAlone()){
             ownerInfo.location = lastLocation;
-            System.out.println("Samotny, wracamy");
         }
         else{
             if(ownerInfo.status == Status.Init && canBecomeMoving()){
                 ownerInfo.status = Status.Moving;
-                System.out.println("No to lecimy");
             }
 
             if(ownerInfo.status == Status.Moving){
-                System.out.println("lokalizacja: " + ownerInfo.location + " gradient: " + ownerInfo.gradient);
                 nextLocation = findNextLocationByEdgeFollowing();
-                System.out.println("Następna lokalizacja: " + nextLocation);
 
                 if(isFinalLocation()){
                     ownerInfo.status = Status.Stationary;
-                    System.out.println("Fajrant!");
                 }
 
                 else {
                     ownerInfo.location = nextLocation;
-                    System.out.println("Jedziemy dalej");
                 }
             }
         }
@@ -79,7 +73,7 @@ public class DriveModule {
     private boolean isFinalLocation() {
         // If I'm not in shape -> not final
         if(!isLocationInShape(ownerInfo.location)){
-            System.out.println(" Obecna lokalizacja nie w kształcie");
+
             return false;
         }
 
@@ -87,9 +81,6 @@ public class DriveModule {
             boolean nextLocationInshape = isLocationInShape(nextLocation);
             neighborhood = new Neighborhood(ownerInfo, othersInfo);
             boolean uniqueGradient = neighborhood.isOwnerGradientUnique();
-
-            System.out.println("Następna lokalizacja w kształcie: " + nextLocationInshape);
-            System.out.println("Unikalny gradient: " + uniqueGradient);
 
             return !nextLocationInshape || !uniqueGradient;
         }

@@ -130,7 +130,6 @@ public class KilobotCreator {
                 leftKilobot.x - margin, // shift a bit left
                 leftKilobot.y + kilobotRadius + margin // shift a bit down
         );
-        System.out.println("Współrzędne początka figury: " + shapeInitPoint);
     }
 
     private Double2D getLowerLeftLocation(){
@@ -153,8 +152,7 @@ public class KilobotCreator {
                 }
 
             }
-        for(Kilobot kilobot : kilobots)
-            System.out.println("kilobot " + kilobot.id + ": " + kilobot.getSpaceInfo().gradient );
+
     }
 
     private void setDesiredShape() {

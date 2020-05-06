@@ -29,15 +29,12 @@ public class Kilobot implements Steppable {
 
         if(driveModule.statusToChange()){
             status = driveModule.getStatus();
-//            System.out.println("Nowy status:" + status);
         }
 
 
         if(driveModule.locationToChange()){
 
             location = driveModule.getLocation();
-            kilobotSimState.yard.setObjectLocation(this, location);
-//            System.out.println("Nowa lokalizacja: " + location);
         }
 
     }
