@@ -6,5 +6,5 @@ Simulation of Multi-Agent System consisting of robots called Kilobots. Their job
 ## Kilobots in action
 Simulation run can be seen on YouTube: https://youtu.be/3pNi63iah6o
 
-![Alt text](Screenshots/path/to/img.jpg?raw=true "Title")
+
 
