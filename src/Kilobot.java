@@ -35,8 +35,15 @@ public class Kilobot implements Steppable {
         if(driveModule.locationToChange()){
 
             location = driveModule.getLocation();
+            setLocationInYard(location, kilobotSimState);
+
         }
 
+    }
+
+    private void setLocationInYard(Double2D location, KilobotSimState state) {
+        KilobotSimState kilobotSimState = (KilobotSimState) state;
+        kilobotSimState.yard.setObjectLocation(this, location);
     }
 
     private void setGradientBasedOnNeighbors(List<SpaceInfo> othersInfo) {//TODO

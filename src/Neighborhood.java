@@ -61,7 +61,6 @@ public class Neighborhood {
     }
 
 
-
     public int getNumOccupiedNeighbors(){
         return (int) neighbors.stream().filter(x -> x.occupied).count();
     }

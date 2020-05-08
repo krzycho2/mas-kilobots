@@ -57,10 +57,7 @@ public class KilobotCreator {
             kilobot.setGradient(initGradient);
             kilobot.setId(currentID++);
 
-            if(i == 0)
-                kilobot.status = Status.Moving;
-            else
-                kilobot.status = Status.Init;
+            kilobot.status = Status.Init;
 
             kilobots.add(kilobot);
         }

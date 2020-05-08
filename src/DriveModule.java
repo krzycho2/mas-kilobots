@@ -45,10 +45,18 @@ public class DriveModule {
         beforeStatus = ownerInfo.status;
         beforeLocation = ownerInfo.location;
 
+        selfAssembly();
+
+        lastLocation = beforeLocation;
+    }
+
+    private void selfAssembly() {
         neighborhood = new Neighborhood(ownerInfo, othersInfo);
+
         if(neighborhood.isAlone()){
             ownerInfo.location = lastLocation;
         }
+
         else{
             if(ownerInfo.status == Status.Init && canBecomeMoving()){
                 ownerInfo.status = Status.Moving;
@@ -57,33 +65,33 @@ public class DriveModule {
             if(ownerInfo.status == Status.Moving){
                 nextLocation = findNextLocationByEdgeFollowing();
 
-                if(isFinalLocation()){
-                    ownerInfo.status = Status.Stationary;
+                if(!isLocationInShape(ownerInfo.location)){
+
+                    ownerInfo.location = nextLocation;
                 }
 
-                else {
-                    ownerInfo.location = nextLocation;
+                else
+                {
+                    if(isFinalLocation()){
+                        ownerInfo.status = Status.Stationary;
+                    }
+
+                    else {
+                        ownerInfo.location = nextLocation;
+                    }
                 }
             }
         }
-
-        lastLocation = beforeLocation;
     }
 
     private boolean isFinalLocation() {
         // If I'm not in shape -> not final
-        if(!isLocationInShape(ownerInfo.location)){
+        boolean nextLocationInshape = isLocationInShape(nextLocation);
+        neighborhood = new Neighborhood(ownerInfo, othersInfo);
+        boolean uniqueGradient = neighborhood.isOwnerGradientUnique();
 
-            return false;
-        }
+        return !nextLocationInshape || !uniqueGradient;
 
-        else{
-            boolean nextLocationInshape = isLocationInShape(nextLocation);
-            neighborhood = new Neighborhood(ownerInfo, othersInfo);
-            boolean uniqueGradient = neighborhood.isOwnerGradientUnique();
-
-            return !nextLocationInshape || !uniqueGradient;
-        }
 
     }
 
